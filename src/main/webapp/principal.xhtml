@@ -4,8 +4,33 @@
 <meta charset="ISO-8859-1"></meta>
 <h:head>
 	<title>pantalla principal</title>
+	<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
 </h:head>
 <h:body>
 	<h1>bienvenido a pantalla principal</h1>
+	
+	<h:dataTable id ="tblEmpleados" var="empleado"  value="#{principalController.empleados}" headerClass="headerTable" rowClasses="rowTable rowTableLine">
+		<h:column>
+			<f:facet name="header">Nombre</f:facet>
+			<h:outputText value="#{empleado.nombre}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Primer Apellido</f:facet>
+			<h:outputText value="#{empleado.primerApellido}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Segundo Apellido</f:facet>
+			<h:outputText value="#{empleado.segundoApellido}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Puesto</f:facet>
+			<h:outputText value="#{empleado.puesto}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Estatus</f:facet>
+			<h:outputText value="habilitado" rendered="#{empleado.estatus}"></h:outputText>
+			<h:outputText value="inhabilitado" rendered="#{!empleado.estatus}"></h:outputText>
+		</h:column>
+	</h:dataTable>
 </h:body>
 </html>
